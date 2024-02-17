@@ -1,9 +1,8 @@
 const express = require('express');
 const routes = require('./controllers');
-const { Sequelize } = require('sequelize');
+const sequelize = require('./config/connection');
 const expressHandlebars = require('express-handlebars').engine;
 const path = require('path');
-const sequelize = new Sequelize(process.env.DB_NAME, process.env.DB_USER, process.env.PASSWORD, { dialect: 'mysql' })
 require('dotenv').config();
 
 
