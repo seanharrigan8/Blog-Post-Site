@@ -1,0 +1,19 @@
+
+{{!-- <div class="navbar">
+  <a href="/">Home</a>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/login">Login</a>
+</div>
+<div class="navbar">
+  <a href="/">Home</a>
+  <a href="/dashboard">Dashboard</a>
+  <a href="/login">Login</a>
+</div> --}}
+
+<ul class="posts-list">
+  {{#each posts as |post|}}
+  <li>
+    {{>post-info post}}
+  </li>
+  {{/each}}
+</ul>

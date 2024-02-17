@@ -5,12 +5,23 @@ const Sequelize = require('sequelize');
 // const expressHandlebars = require('express-handlebars');
 
 // Express App
-const router = require('express').Router();
+const router = express.Router();
 
 router.use(express.json());
 router.use(session({ secret: 'secret key', resave: false, saveUninitialized: false }));
 // app.engine('handlebars', expressHandlebars({ defaultLayout: 'main' }));
 // app.set('view engine', 'handlebars');
+
+
+router.get('/', (req, res) => {
+    try {
+        
+        res.render('main', { data });   
+    } catch (err) {
+        console.error(err);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
 
 //Sequelize models
 const sequelize = new Sequelize('database', 'username', 'password', { dialect: 'mysql' });
