@@ -3,7 +3,6 @@ CREATE DATABASE blog_db;
 
 USE blog_db;
 
-// Create the tables
 CREATE TABLE users (
   id INT NOT NULL AUTO_INCREMENT,
   username VARCHAR(60) NOT NULL,

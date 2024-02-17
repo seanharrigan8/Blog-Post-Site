@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>{{pageTitle}}</title>
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+    <header>
+        <h1>{{pageTitle}}</h1>
+    </header>
+
+    <nav>
+        <ul>
+            {{#each menuItems}}
+                <li><a href="{{url}}">{{label}}</a></li>
+            {{/each}}
+        </ul>
+    </nav>
+
+    <main>
+        {{{body}}}
+    </main>
+
+    <footer>
+        <p>&copy; {{currentYear}} Blog Post Site</p>
+    </footer>
+
+    <script src="/js/script.js"></script>
+</body>
+</html>
