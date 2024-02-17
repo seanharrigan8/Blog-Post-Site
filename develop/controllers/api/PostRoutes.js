@@ -11,7 +11,7 @@ router.post("/", async (req, res) => {
     console.log(newPost);
 
 res.json(newPost);
-}  catch (err); {
+}  catch (err) {
   res.status(500).json({ error: "Internal Server Error" });
 
 }
@@ -24,6 +24,10 @@ router.put("/:id", async (req, res) => {
     const editPost = await Post.update({
       ...req.body,
       user_id: req.session.user_id,
+    }, {
+      where: {
+        id: req.params.id,
+      },
     });
     console.log(editPost);
     res.json(editPost);

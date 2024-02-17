@@ -3,7 +3,7 @@ const { Post, User, Comment } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 //all blog  posts
-router.get('/', async (req, res) => {
+router.get('/', withAuth, async (req, res) => {
     try {
         const postData = await Post.findAll({
             include: [{ model: User }, { model: Comment }],
@@ -15,7 +15,7 @@ router.get('/', async (req, res) => {
 });
 
 //single blog post
-router.get('/:id', async (req, res) => {
+router.get('/:id', withAuth, async (req, res) => {
     try {
         const postData = await Post.findByPk(req.params.id, {
             include: [{ model: User }, { model: Comment }],
@@ -29,5 +29,6 @@ router.get('/:id', async (req, res) => {
         res.status(500).json(err);
     }
 });
+
 
 //

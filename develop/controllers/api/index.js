@@ -9,4 +9,4 @@ router.use('/posts', postRoutes);
 router.use('/comments', commentRoutes);
 router.use('/activities', activityRoutes);
 
-module.exports;
+module.exports = router;

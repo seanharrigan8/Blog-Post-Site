@@ -4,7 +4,7 @@ const { Comment } = require('../../models');
 //new comment
 router.post('/', async (req, res) => {
     try {
-  const new Comment - await Comment.creat({
+  const newComment = await Comment.creat({
     ...req.body, 
     user_id: req.session.user_id,
     post_id: req.body.post_id
@@ -17,7 +17,7 @@ router.post('/', async (req, res) => {
   res.json(newComment);
 } catch (err) {
     console.error(err);
-    res.status(500_.json({ error: "Internal server error"}));
+    res.status(500).json({ error: "Internal server error"});
 }
 });
 
