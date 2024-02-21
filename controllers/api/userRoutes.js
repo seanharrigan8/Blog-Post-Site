@@ -1,18 +1,18 @@
 const router = require('express').Router();
-const { User, Post, Comment } = require('../../models');
+const { User } = require('../../models');
 
 
-//get all users 
-// router.get('/', async (req, res) => {
-//     try {
-//         const userData = await User.findAll({
-//             include: [{ model: Post }],
-//         });
-//         res.status(200).json(userData);
-//     } catch (err) {
-//         res.status(500).json(err);
-//     }
-// });
+get all users 
+router.get('/', async (req, res) => {
+    try {
+        const userData = await User.findAll({
+            include: [{ model: Post }],
+        });
+        res.status(200).json(userData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
 
 ///get one user//
 // router.get('/:id', async (req, res) => {
@@ -34,13 +34,14 @@ const { User, Post, Comment } = require('../../models');
 
 
 //Create user
-router.post('/', async (req, res) => {
+router.post('/signup', async (req, res) => {
     try {
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
             res.status(200).json(userData);
+            res.redirect('/dashboard');
         });
     } catch (err) {
         res.status(400).json(err);
