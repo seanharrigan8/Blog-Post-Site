@@ -1,7 +1,7 @@
 // Import required modules
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
-const withAuth = require("../public/utils/auth");
+const withAuth = require("../utils/auth");
 const bcrypt = require("bcrypt");
 // Route to get all blog posts
 
@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
     const posts = postData.map((post) => post.get({ plain: true }));
 
     // Render the homepage template with the fetched data
-    res.render("homepage", { posts, loggedIn: req.session.loggedIn });
+    res.render("homepage", { posts, logged_in: req.session.loggedIn });
   } catch (err) {
     console.log(err);
     res.status(500).json(err);
@@ -72,37 +72,7 @@ router.get("/login", async (req, res) => {
   }
 });
 
-// Route to handle user login
-router.post("/login", async (req, res) => {
-  try {
-    const userData = await User.findOne({ where: { email: req.body.email } });
 
-    if (!userData) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
-      return;
-    }
-
-    const validPassword = await bcrypt.compare(req.body.password, userData.password);
-
-    if (!validPassword) {
-      res
-        .status(400)
-        .json({ message: "Incorrect email or password, please try again" });
-      return;
-    }
-    req.session.save(() => {
-      req.session.userId = userData.id;
-      req.session.loggedIn = true;
-      // res.json({ user: userData, message: "You are now logged in!" });
-      res.redirect("/dashboard");
-    });
-  } catch (err) {
-    console.log(err);
-    res.status(500).json(err);
-  }
-});
 
 // Route to render the signup page
 router.get('/signup', async (req, res) => {
@@ -120,23 +90,7 @@ router.get('/signup', async (req, res) => {
   }
 });
 
-// Route to handle user signup
-router.post('/signup', async (req, res) => {
-  try {
-    // Create a new user with the provided data
-    const userData = await User.create(req.body);
 
-    req.session.save(() => {
-      req.session.userId = userData.id;
-      req.session.loggedIn = true;
-
-      // Redirect to the dashboard page
-      res.redirect('/dashboard');
-    });
-  } catch (err) {
-    res.status(400).json(err);
-  }
-});
 
 // Export the router
 module.exports = router;

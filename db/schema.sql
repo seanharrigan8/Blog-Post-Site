@@ -1,35 +1,3 @@
--- Active: 1702602762730@@127.0.0.1@3306@blog_db
+-- -- Active: 1702602762730@@127.0.0.1@3306@blog_db
 DROP DATABASE IF EXISTS blog_db;
 CREATE DATABASE blog_db;
--- USE blog_db;
--- CREATE TABLE Users (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     password VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
--- CREATE TABLE User (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     password VARCHAR(255) NOT NULL,
---     email VARCHAR(255) NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
--- );
--- CREATE TABLE Post (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     title VARCHAR(255) NOT NULL,
---     content TEXT NOT NULL,
---     user_id INT NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (user_id) REFERENCES User(id)
---     updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
--- );
--- CREATE TABLE Comment (
---     id INT AUTO_INCREMENT PRIMARY KEY,
---     content TEXT NOT NULL,
---     user_id INT NOT NULL,
---     post_id INT NOT NULL,
---     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
---     FOREIGN KEY (user_id) REFERENCES User(id),
---     FOREIGN KEY (post_id) REFERENCES Post(id)
--- );
-```

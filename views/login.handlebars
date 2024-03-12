@@ -36,9 +36,7 @@
             cursor: pointer;
         }
 
-        .form button[type="submit"]:hover {
-            background-color: #0056b3;
-        }
+       
 
         .form p {
             margin-top: 10px;
@@ -60,29 +58,29 @@
 
     <div class="container">
         <h2>Login</h2>
-        <div class="form loginForm">
-            <form action="/dashboard" method="POST" id="loginForm">
+            <form class="form" id="loginForm">
                 <!-- Email input -->
                 <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="email" id="email" name="email" class="form-control" required>
+                    <label for="email-login">Email:</label>
+                    <input type="email" id="email-login"  required>
                 </div>
                 <!-- Password input -->
                 <div class="form-group">
-                    <label for="password">Password:</label>
-                    <input type="password" id="password" name="password" class="form-control" required>
+                    <label for="password-login">Password:</label>
+                    <input type="password" id="password-login" name="password" required>
                 </div>
                 <!-- Submit button -->
-                <button type="submit" class="btn btn-primary" id="loginButton">Login</button>
+                <button type="submit" class="btn btn-primary" >Login</button>
         
             </form>
+          
             <!-- Sign up link -->
             <p>Don't have an account? 
                 <a href="/signup">Sign up</a>
                 </p>
         </div>
         <!-- Login script -->
-        <script src="/js/login.js"></script>
 
         
-    </div>
+        <script src="/js/login.js"></script>
+      

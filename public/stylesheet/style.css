@@ -37,6 +37,16 @@ header {
   color: #333;
 }
 
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #333;
+  color: white;
+  text-decoration: none;
+  margin-top: 20px;
+  border-radius: 5px;
+  font-weight: bold; /* Added */
+}
 .navbar {
   overflow: hidden;
   text-align: center;

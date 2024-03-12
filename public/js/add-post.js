@@ -33,3 +33,4 @@ async function handleAddPost() {
 // Add event listener to the submit button
 const submitButton = document.getElementById('submit');
 submitButton.addEventListener('click', handleAddPost);
+

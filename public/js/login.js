@@ -1,34 +1,52 @@
 
+
 // Function to handle login
-async function handleLogin() {
-    try {
-        // Get the username and password from the form
-        const username = document.getElementById('email').value;
-        const password = document.getElementById('password').value;
+async function handleLogin(event) {
+    // Prevent form submission
+    event.preventDefault();
 
-        const response = await fetch('/api/users/login', {
-            method: 'POST',
-            body: JSON.stringify({ email, password }),
-            headers: { 'Content-Type': 'application/json' },
-        });
+    // Get the username and password from the form
+    const email = document.getElementById("email-login").value;
+    const password = document.getElementById("password-login").value;
 
-        const data = await response.json();
+    console.log("email", email);
+    console.log("password", password);
 
-        if (response.ok) {
-            // If login is successful, redirect to the homepage
-            window.location.href = '/dashboard';
-        } else {
-            alert(data.message);
+    // Send a POST request to the login API endpoint
+    // if (email && password) {
+    const response = fetch("/api/login", {
+        method: "POST",
+       
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password })
+    });
+
+    console.log("response:", response);
+
+
+            if (response.ok) {
+                console.log("Login successful");
+                // If login is successful, parse the response as JSON
+               document.location.replace('/dashboard');
+            } else {
+                // If login fails, throw an error
+               alert('Failed to log in');
+            }
         }
-    }
-    catch (error) {
-        console.error('Error occurred during login:', error);
-    }
-}
+    
+    // 
+    
+    //     .then((data) => {
+    //         // If login is successful, log the response data and redirect to the dashboard
+    //         console.log("Login successful:", data);
+    //         window.location.href = "/dashboard";
+    //     })
+    //     .catch((error) => {
+    //         // If an error occurs during login, log the error
+    //         console.error("Error occurred during login:", error);
+
+        
 
 
-// Event listener for the login form submission
-// document.getElementById('loginForm').addEventListener('submit', async function(event) {
-//     event.preventDefault(); // Prevent form submission
-//     await handleLogin(); // Call the handleLogin function
-// });
+// Attach the handleLogin function to the form's submit event
+document.getElementById("loginForm").addEventListener("submit", handleLogin);

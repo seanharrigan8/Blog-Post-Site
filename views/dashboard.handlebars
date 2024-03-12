@@ -1,14 +1,15 @@
-</html>
+
 
 <!-- Section for creating a new post -->
-<section class="new-post-section">
-    <button type="submit" class="btn" id="create-new-post">+ Create new post</button>
-</section>
+
 
 <!-- Check if there are any posts -->
 {{#if posts.length}}
 <section>
     <h2>Your Dashboard</h2>
+ 
+    <a href="/new-post" class="btn" id="create-new-post">Create new post</a>
+   
     <ul class="post-list">
         <!-- Iterate over each post -->
         {{#each posts as |post|}}
@@ -24,3 +25,5 @@
 
 <!-- Include the JavaScript file for creating a new post -->
 <script src="/js/create-post.js"></script>
+<script src="/js/edit-post.js"></script>
+<script src="/js/new-post.js"></script>

@@ -1,37 +1,30 @@
 // Function to save user credentials
-async function saveUserCredentials(username, password) {
-  try {
-    const response = await fetch('/api/signup', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    });
-    console.log('User credentials saved successfully');
-  } catch (error) {
-    console.error('Error saving user credentials:', error);
-  }
-}
 
-// Function to handle log in process
-async function logIn() {
-  try {
-    const response = await fetch('/api/login', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({ email, password })
-    });
-    console.log('Logged in successfully');
-  } catch (error) {
-    console.error('Error logging in:', error);
-  }
-}
+
+async function saveUserCredentials(event) {
+  event.preventDefault();
+  const email = document.getElementById('email-signup').value;  
+  const password = document.getElementById('password').value;
   
-document.getElementById('signUp').addEventListener('submit', async function(event) {  event.preventDefault(); // Prevent form submission
 
-  // Redirect to signup page
-  window.location.href = '/signup';
-});
+    const response = await fetch('/api/users', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+   
+    if(response.ok) {
+      console.log('User credentials saved successfully');
+      document.location.replace('/dashboard');
+    }else {
+      alert('Failed to save user credentials');
+    }
+  
+}
+
+
+
+  
+document.getElementById('signUp').addEventListener('submit', saveUserCredentials);

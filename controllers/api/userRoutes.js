@@ -1,45 +1,25 @@
 const router = require("express").Router();
 const { User, Post } = require("../../models");
+const bcrypt = require("bcrypt");
+express = require("express");
+//bring in withAuth middleware
+const withAuth = require("../../utils/auth");
 
-// Get all users and their associated posts
-router.get("/", async (req, res) => {
-    try {
-        const userData = await User.findAll({
-            include: [{ model: Post }],
-        });
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
-
-// Get a specific user by ID and their associated posts
-router.get("/:id", async (req, res) => {
-    try {
-        const userData = await User.findByPk(req.params.id, {
-            include: [{ model: Post }],
-        });
-
-        if (!userData) {
-            res.status(404).json({ message: "No user found with this id" });
-            return;
-        }
-
-        res.status(200).json(userData);
-    } catch (err) {
-        res.status(500).json(err);
-    }
-});
 
 // Create a new user
 router.post("/", async (req, res) => {
     try {
+        console.log(req.body);
+        const hashedPassword = await bcrypt.hash(req.body.password, 10);
+        req.body.password = hashedPassword;
+
         const userData = await User.create(req.body);
         req.session.save(() => {
             req.session.user_id = userData.id;
             req.session.logged_in = true;
+
             res.status(200).json(userData);
-            // res.redirect('/dashboard');
+            
         });
     } catch (err) {
         res.status(400).json(err);
@@ -51,18 +31,21 @@ router.post("/", async (req, res) => {
 // User login with email and password verification
 router.post("/login", async (req, res) => {
     try {
+        console.log(req.body);
         const userData = await User.findOne({ where: { email: req.body.email } });
         if (!userData) {
+            console.log("no user found");
             res
                 .status(400)
                 .json({ message: "Incorrect email or password, please try again" });
             return;
         }
 
-        const validPassword = await bcrypt.compare(req.body.password, userData.password);
-    
+        const validPassword = await bcrypt.compare(req.body.password, userData.password)
+      
 
         if (!validPassword) {
+            console.log("password incorrect");
             res
                 .status(400)
                 .json({ message: "Incorrect email or password, please try again" });
@@ -76,6 +59,7 @@ router.post("/login", async (req, res) => {
             res.json({ user: userData, message: "You are now logged in" });
         });
     } catch (err) {
+        console.log(err);
         res.status(400).json(err);
     }
 });
