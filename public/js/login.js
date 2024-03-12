@@ -28,7 +28,7 @@ async function handleLogin() {
 
 
 // Event listener for the login form submission
-document.getElementById('loginForm').addEventListener('submit', async function(event) {
-    event.preventDefault(); // Prevent form submission
-    await handleLogin(); // Call the handleLogin function
-});
+// document.getElementById('loginForm').addEventListener('submit', async function(event) {
+//     event.preventDefault(); // Prevent form submission
+//     await handleLogin(); // Call the handleLogin function
+// });

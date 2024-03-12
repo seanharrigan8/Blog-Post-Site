@@ -30,7 +30,7 @@ async function logIn() {
   }
 }
   
-document.getElementById('signup').addEventListener('submit', async function(event) {  event.preventDefault(); // Prevent form submission
+document.getElementById('signUp').addEventListener('submit', async function(event) {  event.preventDefault(); // Prevent form submission
 
   // Redirect to signup page
   window.location.href = '/signup';

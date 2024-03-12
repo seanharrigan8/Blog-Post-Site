@@ -1,6 +1,8 @@
 // Import required modules
 const router = require('express').Router();
-const withAuth = require('../utils/auth');
+const withAuth = require('../public/utils/auth');
+const { Post } = require('../models');
+
 
 // Homepage route
 router.get('/', async (req, res) => {
@@ -49,22 +51,22 @@ router.get('/login', async (req, res) => {
     }
 });
 
-// Signup route
-router.get('/signup', async (req, res) => {
-    try {
-        // Check if user is already logged in
-        if (req.session.loggedIn) {
-            // Redirect to homepage if logged in
-            res.redirect('/');
-            return;
-        }
-        // Render the signup template
-        res.render('signup');
-    } catch (err) {
-        // Handle errors
-        res.status(500).json(err);
-    }
-});
+// // Signup route
+// router.get('/signup', async (req, res) => {
+//     try {
+//         // Check if user is already logged in
+//         if (req.session.loggedIn) {
+//             // Redirect to homepage if logged in
+//             res.redirect('/');
+//             return;
+//         }
+//         // Render the signup template
+//         res.render('signup');
+//     } catch (err) {
+//         // Handle errors
+//         res.status(500).json(err);
+//     }
+// });
 
 // Export the router
 module.exports = router;

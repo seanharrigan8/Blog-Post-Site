@@ -1,10 +1,10 @@
 // Import required modules
 const router = require("express").Router();
 const { Post, User, Comment } = require("../models");
-const withAuth = require("../utils/auth");
+const withAuth = require("../public/utils/auth");
 const bcrypt = require("bcrypt");
-
 // Route to get all blog posts
+
 router.get("/", async (req, res) => {
   try {
     // Fetch all blog posts with associated user data
