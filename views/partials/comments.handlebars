@@ -1,12 +1,17 @@
 <div class="comments">
+    {{!-- Iterate over each comment --}}
     {{#each this}}
     <section class="comment">
         <div class="meta">
+            {{!-- Display the username and creation date of the comment --}}
             {{user.username}} on {{created_at}}
         </div>
         <div class="text">
+            {{!-- Display the comment text --}}
             {{comment_text}}
         </div>
     </section>
     {{/each}}
 </div>
+
+<script src="/js/comments.js"></script>

@@ -1,17 +1,65 @@
+/* main.handlebars */
 
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column; /* Added */
+  align-items: center;
+  background-color: darkgreen; /* Added background color for the page */
+  min-height: 100vh; /* Added */
+}
+
+header {
+  background: linear-gradient(
+    to right,
+    #333333,
+    #666666
+  ); /* Updated background with dark grey gradient */
+  padding: 20px;
+  text-align: center;
+  color: black; /* Updated text color to black */
+  font-family: "Arial Black", sans-serif; /* Added formatted font */
+  width: 100%; /* Set header width to 100% */
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.header s {
+  background-color: grey; /* Added background color for the header */
+  padding: 20px;
+  text-align: center;
+  color: #333;
+}
 
 .navbar {
   overflow: hidden;
-  background-color: #f8f9fa;
+  text-align: center;
+  overflow: hidden;
+  background: linear-gradient(
+    to right,
+    #ff6b6b,
+    #3a1c71
+  ); /* Updated background with linear gradient */
+  position: sticky; /* Added */
+  top: 0; /* Added */
+  width: 100%; /* Set navbar width to 100% */
 }
 
 .navbar a {
-  float: left;
-  display: block;
+  float: none;
+  display: inline-block;
   color: black;
   text-align: center;
   padding: 14px 16px;
   text-decoration: none;
+  font-size: 18px; /* Added */
+  font-weight: bold; /* Added */
 }
 
 .navbar a:hover {
@@ -19,3 +67,12 @@
   color: black;
 }
 
+footer {
+  background-color: grey; /* Added background color for the footer */
+  padding: 20px;
+  text-align: center;
+  color: #333;
+  width: 100%; /* Set footer width to 100% */
+  margin-top: auto; /* Added */
+  background-color: white; /* Added */
+}

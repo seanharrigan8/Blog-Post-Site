@@ -1,36 +1,31 @@
-<!DOCTYPE html>
-<html lang="en">
+    <head>
+            <meta charset="UTF-8" />
+            <title>{{pageTitle}}</title>
+            <title>Blog Site</title>
+            <link rel="stylesheet" href="/stylesheet/style.css"> 
+        </head>
 
-<head>
-    <meta charset="UTF-8">
-    <title>{{pageTitle}}</title>
-    <title>Blog Site</title>
-    <link rel="stylesheet" href="/stylesheets/style.css">
-</head>
+        <body>
+            <header id="mainheader">
+                <h1>Blog Post Website</h1>
+            </header> 
 
-<body>
-    
-    <header>
-        
-        <h1>{{pageTitle}}</h1>
-    </header>
+            <div class="navbar">
+                <a href="/">Home</a>
+                <a href="/dashboard">Dashboard</a>
+                <a href="/login">Login</a>
+            </div>
 
-    <nav>
-        <ul>
-            {{#each menuItems}}
-                <li><a href="{{url}}">{{label}}</a></li>
-            {{/each}}
-        </ul>
-    </nav>
+            <main>
+                {{{ body }}}
+            </main>
 
-    <main>
-        {{{body}}}
-    </main>
+            <footer>
+                <p>&copy; {{formatYear currentYear}} Blog Post Site</p>
+            </footer>
 
-    <footer>
-        <p>&copy; {{currentYear}} Blog Post Site</p>
-    </footer>
+        </body>
 
-    <script src="/js/script.js"></script>
-</body>
-</html>
+        <script src="/js/dashboard.js"></script>
+
+        <script src="/js/helper.js"></script>

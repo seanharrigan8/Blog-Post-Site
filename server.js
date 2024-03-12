@@ -11,8 +11,21 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ helpers });
 
+const hbs = exphbs.create({
+  helpers: {
+      formatYear: function(date) {
+          return new Date(date).getFullYear();
+      },
+      formatDate: function(date) {
+        const d = new Date(date);
+        const day = String(d.getDate()).padStart(2, '0');
+const month = String(d.getMonth() + 1).padStart(2, '0');  
+const year = d.getFullYear();
+return `${month}/${day}/${year}`;
+      }
+  }
+});
 const sess = {
   secret: 'Super secret secret',
   cookie: {},
@@ -25,7 +38,7 @@ const sess = {
 
 app.use(session(sess));
 
-app.engine('handlebars', hbs.engine);
+app.engine('handlebars' , hbs.engine);
 app.set('view engine', 'handlebars');
 
 app.use(express.json());

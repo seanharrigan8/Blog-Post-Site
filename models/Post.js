@@ -1,10 +1,11 @@
-//match the user js
+// match the user js
 
 const { Model, DataTypes } = require("sequelize");
 const sequelize = require("../config/connection");
+const User = require("./User");
 
 class Post extends Model {}
-//create the Post model
+// create the Post model
 
 Post.init(
   {
@@ -22,20 +23,26 @@ Post.init(
       type: DataTypes.STRING,
       allowNull: false,
     },
-    // user_Id: {
-    //   type: DataTypes.INTEGER,
-    //   references: {
-    //     model: "user",
-    //     key: "id",
-    //   
-    // },
+    created_at: {
+      type: DataTypes.DATE,
+      allowNull: false,
+      defaultValue: DataTypes.NOW,
+    },
   },
   {
-    sequelize,
+    sequelize, // Pass the sequelize instance here
     freezeTableName: true,
     underscored: true,
     modelName: "post",
+    timestamps: false,
   }
 );
+
+Post.belongsTo(User, {
+  foreignKey: "user_id",
+  onDelete: "CASCADE",
+});
+
+
 
 module.exports = Post;

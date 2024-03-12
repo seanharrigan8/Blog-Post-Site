@@ -1,29 +1,37 @@
-// async function signupFormHandler(event) {
-//     event.preventDefault();
+// Function to save user credentials
+async function saveUserCredentials(username, password) {
+  try {
+    const response = await fetch('/api/signup', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+    console.log('User credentials saved successfully');
+  } catch (error) {
+    console.error('Error saving user credentials:', error);
+  }
+}
 
-//     const username = document.querySelector('#username-signup').value.trim();
-//     const email = document.querySelector('#email-signup').value.trim(); 
-//     const password = document.querySelector('#password-signup').value.trim();
+// Function to handle log in process
+async function logIn() {
+  try {
+    const response = await fetch('/api/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ email, password })
+    });
+    console.log('Logged in successfully');
+  } catch (error) {
+    console.error('Error logging in:', error);
+  }
+}
+  
+document.getElementById('signup').addEventListener('submit', async function(event) {  event.preventDefault(); // Prevent form submission
 
-//     if (username && email && password) {
-//         const response = await fetch('/api/users', {
-//             method: 'post',
-//             body: JSON.stringify({
-//                 username,
-//                 email,
-//                 password
-//             }),
-//             headers: { 'Content-Type': 'application/json' }
-//         });
-//         // check the response status
-//         if (response.ok) {
-//             console.log('success');
-//             document.location.replace('/dashboard');
-//         } else {
-//             alert(response.statusText);
-//         }
-
-//         document.querySelector('#username-signup').value = '';
-
-//     }
-// }
+  // Redirect to signup page
+  window.location.href = '/signup';
+});

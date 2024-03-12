@@ -3,21 +3,27 @@
 const User = require('../models/User');
 const Post = require('../models/Post');
 
-
 async function seedDatabase() {
-  await User.create({
-    username: 'testuser',
-    password: 'testpassword',
-    email: 'testuser@example.com'
-  });
+  const user = await User.findOne({ where: { email: 'testuser@example.com' } });
+  if (!user) {
+    await User.create({
+      user_Id: 1,
+      password: 'testpassword',
+      email: 'testuser@example.com'
+    });
+  }
 
-  await Post.create({
-    id: 1,
-    title: 'Test Post',
-    content: 'This is a test post.',
-    // Replace '1' with the ID of the user you just created
-    user_Id: 1,
-  });
+  await Post.sync();
+
+  const post = await Post.findOne({ where: { id: 1 } });
+  if (!post) {
+    await Post.create({
+      id: 1,
+      title: 'Test Post',
+      content: 'This is a test post.',
+      user_Id: user.id,
+    });
+  }
 
   console.log('Database seeded!');
 }

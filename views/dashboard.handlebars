@@ -1,16 +1,19 @@
-
 </html>
+
+<!-- Section for creating a new post -->
 <section class="new-post-section">
     <button type="submit" class="btn" id="create-new-post">+ Create new post</button>
 </section>
 
-
+<!-- Check if there are any posts -->
 {{#if posts.length}}
 <section>
     <h2>Your Dashboard</h2>
     <ul class="post-list">
+        <!-- Iterate over each post -->
         {{#each posts as |post|}}
         <li>
+            <!-- Include the partial template for displaying post information -->
             {{> post-info post}}
             <a href="/dashboard/edit/{{post.id}}" class="edit-link">edit post</a>
         </li>
@@ -19,4 +22,5 @@
 </section>
 {{/if}}
 
-<script src="/javascript/create-post.js"></script>
+<!-- Include the JavaScript file for creating a new post -->
+<script src="/js/create-post.js"></script>

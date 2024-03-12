@@ -1,20 +1,80 @@
+<style>
+    .container {
+        background-color: #ffffff;
+        border: 2px solid black;
+        border-radius: 10px;
+        padding: 30px;
+        margin-top: 15px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+     /* Adjust the width as needed */
+    }
 
+    /* BEGIN: Additional styling */
+    .container h1 {
+        font-size: 24px; /* Increase the font size */
+        margin-top: 0; /* Move it up */
+    }
 
-<head>
-    <title>Signup</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <h1>Signup</h1>
-    <form action="/signup" method="POST">
-        <label for="username">Username:</label>
-        <input type="text" id="username" name="username" required>
+    h1 {    
+        font-size: 40px; /* Increase the font size */
+        margin-top: 0; /* Move it up */
+    }
 
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
+.form {
+        margin-top: 20px;
+    }
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required>
+    .form label {
+        font-size: 20px; /* Increase the font size */
+        font-weight: bold; /* Add font weight */
+    }
 
-        <button type="submit">Sign Up</button>
+    .form input[type="email"],
+.form input[type="password"],
+    .form input[type="text"] {
+        width: 100%; /* Adjust the width as needed */
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 10px;
+        font-size: 16px; /* Increase the font size */
+    }
+
+    .form button[type="submit"] {
+        background-color: #007bff;
+        color: black;
+        border: none;
+        border-radius: 5px;
+        padding: 10px 20px; /* Increase the padding */
+        font-size: 50px;
+        font-size: 16px; /* Increase the font size */
+        cursor: pointer;
+        margin-top: 10px;
+    }
+
+   .form button[type="submit"]:hover {
+        background-color: #0056b3;
+    }
+
+    .form a:hover {
+        text-decoration: underline;
+    }
+    /* END: Additional styling */
+</style>
+
+<div class="container">
+    <h1>Signup</h1> <!-- Increase the font size and move it up -->
+
+    <form class="form" action="/signup" method="POST">
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required>
+        </div>
+        <div class="form-group">
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required>
+        </div>
+        <button type="submit" class="btn btn-primary">Sign Up</button>
     </form>
+</div>
+<script src="js/signup.js"></script>

@@ -1,20 +1,27 @@
-
-
+<!-- Define the head section of the HTML page -->
 <head>
     <meta charset="UTF-8">
     <title>{{title}}</title>
     <link rel="stylesheet" href="{{styles}}">
 </head>
+
+<!-- Define the body section of the HTML page -->
 <body>
+    <!-- Define the header section of the page -->
     <header>
         <h1>{{title}}</h1>
     </header>
+
+    <!-- Define the main content section of the page -->
     <main>
         {{{body}}}
     </main>
+
+    <!-- Define the footer section of the page -->
     <footer>
         <p>Posted by {{author}} on {{date}}</p>
     </footer>
-    <script src="{{script}}"></script>
 
-
+    <!-- Include the JavaScript file for adding a post -->
+    <script src="/js/add-post.js"></script>
+</body>

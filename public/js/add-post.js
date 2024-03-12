@@ -1,23 +1,10 @@
-// Dependencies: sequelize, mysql2, await functions, async functions, fetch api
-
-//add in the necessary imports
-const { Model, DataTypes } = require('sequelize');
-const sequelize = require('../config/connection');
-
-//create a new Post model
-class Post extends Model {}
+// Dependencies: sequelize, mysql2, await functions, async functions, fetch api, handlebars
 
 // Function to handle submit button click
 async function handleAddPost() {
     // Get the title and content of the post from the input fields
     const title = document.getElementById('title').value;
     const content = document.getElementById('content').value;
-
-    // Create a new post object
-    const newPost = {
-        title,
-        content
-    };
 
     try {
         // Send a post request to the server with the new post data
@@ -38,11 +25,11 @@ async function handleAddPost() {
             console.error('Failed to add post');
         }
     } catch (error) {
-        console.error('Failed to add post', error);
+        // Display the error message
+        console.error('Failed to send post request:', error);
     }
 }
 
 // Add event listener to the submit button
 const submitButton = document.getElementById('submit');
 submitButton.addEventListener('click', handleAddPost);
-
